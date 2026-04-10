@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biografía - Marlon Obed</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a, #38bdf8);
+            padding: 20px;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .tarjeta {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            padding: 35px 30px;
+            text-align: center;
+            animation: aparecer 0.6s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .titulo {
+            font-size: 30px;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+
+        .subtitulo {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .datos {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 25px;
+        }
+
+        .dato {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 16px 18px;
+            text-align: left;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .dato:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+        }
+
+        .etiqueta {
+            display: block;
+            font-size: 12px;
+            color: #3b82f6;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .valor {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e293b;
+            line-height: 1.4;
+        }
+
+        .boton {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 14px;
+            text-decoration: none;
+            text-align: center;
+            background: linear-gradient(135deg, #2563eb, #0ea5e9);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .boton:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(37, 99, 235, 0.3);
+            filter: brightness(1.1);
+        }
+
+        @media (max-width: 480px) {
+            .tarjeta { padding: 25px 20px; }
+            .titulo { font-size: 24px; }
+        }
+
+        .foto {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid #38bdf8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <div class="tarjeta">
+        <img th:src="@{/img/Multimedia.jpg}" alt="Foto de perfil" class="foto">
+        <h1 class="titulo">Biografía</h1>
+        <p class="subtitulo">Perfil Personal Profesional</p>
+
+        <div class="datos">
+            <div class="dato">
+                <span class="etiqueta">Nombre Completo</span>
+                <span class="valor">Marlon Obed Suyuc Baján</span>
+            </div>
+
+            <div class="dato">
+                <span class="etiqueta">Sobre mí</span>
+                <span class="valor">Mi nombre es Marlon Obed Suyuc Baján, nací el 30 de mayo del 2009
+                y actualmente me gustan los instrumentos musicales y el desarrollo de videojuegos,
+                en basicos me caracterizaba por ser el alumno mas callado del salon por no socializar
+                o participar en el salon, pero al ingresar a kinal me volvi un poco mas sociable y responsable,
+                entre a estudiar informática para desarrollar juegos y para trabajar.
+                </span>
+            </div>
+
+            <div class="dato">
+                <span class="etiqueta">Taller</span>
+                <span class="valor">5to Perito</span>
+            </div>
+        </div>
+
+        <a class="boton" th:href="@{/home}">Ir a Home</a>
+    </div>
+</div>
+
+</body>
+</html>

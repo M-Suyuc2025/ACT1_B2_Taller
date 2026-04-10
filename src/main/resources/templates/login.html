@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a, #38bdf8);
+            padding: 20px;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .tarjeta {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            padding: 35px 30px;
+            text-align: center;
+            animation: aparecer 0.6s ease;
+        }
+
+        .titulo {
+            font-size: 30px;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            font-size: 15px;
+            color: #475569;
+            margin-bottom: 25px;
+        }
+
+        .mensaje {
+            margin-bottom: 18px;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .success {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .campo {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .campo label {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .campo input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+        }
+
+        .boton {
+            width: 100%;
+            padding: 14px;
+            margin-top: 10px;
+            border-radius: 14px;
+            border: none;
+            background: linear-gradient(135deg, #2563eb, #0ea5e9);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .link {
+            margin-top: 15px;
+        }
+
+        .link a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <div class="tarjeta">
+
+        <h2 class="titulo">Iniciar sesión</h2>
+        <p class="subtitulo">Ingrese sus credenciales</p>
+
+        <div th:if="${param.error}" class="mensaje error">
+            Usuario o contraseña incorrectos
+        </div>
+
+        <div th:if="${param.logout}" class="mensaje success">
+            Sesión cerrada correctamente
+        </div>
+
+        <form th:action="@{/login}" method="post">
+
+            <div class="campo">
+                <label>Usuario</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="campo">
+                <label>Contraseña</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <button type="submit" class="boton">Ingresar</button>
+
+        </form>
+
+        <!-- 🔥 BOTÓN REGISTER CORRECTO -->
+        <div class="link">
+            ¿No tienes cuenta? <a href="/auth/register">Regístrate aquí</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
